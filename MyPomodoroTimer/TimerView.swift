@@ -1,0 +1,130 @@
+//
+//  TimerView.swift
+//  MyPomodoroTimer
+//
+//  Created by Jan-Niclas Strüwer on 31.10.22.
+//
+
+import SwiftUI
+
+struct TimerView: View {
+    
+    let name: String
+    let cTimer: MyTimer
+    @State var displayedTime: String
+    
+    @State var startStop: String = "Start"
+    
+    init(name: String, startTime: UInt16 = 0) {
+        self.name = name
+        self.cTimer = MyTimer(startTime: startTime)
+        self.displayedTime = cTimer.time
+    }
+    
+    var body: some View {
+        VStack {
+            Text(name)
+            Text(displayedTime).onReceive(self.cTimer.$time) { newValue in
+                self.displayedTime = newValue
+            }
+            Button(self.startStop, action: {
+                switch self.cTimer.state {
+                case .stopped:
+                    self.cTimer.start()
+                case .running:
+                    self.cTimer.stop()
+                case .finished:
+                    self.cTimer.reset()
+                }
+            }).onReceive(self.cTimer.$state) { state in
+                switch state {
+                case .running:
+                    self.startStop = "Stop"
+                case .stopped:
+                    self.startStop = "Start"
+                case .finished:
+                    self.startStop = "Reset"
+                }
+            }
+        }
+    }
+    
+    
+}
+
+class MyTimer: ObservableObject {
+    
+    enum TimerState {
+        case running
+        case stopped
+        case finished
+    }
+    
+    private var startTime: UInt16
+    /// Current timer value in seconds
+    private var currentTime: UInt16
+    private var timer: Timer? = nil
+    @Published var time: String
+    @Published var state: TimerState = TimerState.stopped
+    
+    init(startTime: UInt16) {
+        self.startTime = startTime
+        self.currentTime = startTime
+        self.time = ""
+        self.time = toString()
+    }
+    
+    /// Takes a timer value in seconds and transforms it into String representation
+    /// Return format: "MM:SS"
+    private func toString() -> String {
+        
+        if self.currentTime == 0 {
+            return "00:00" //TODO: maybe we want a custom finished message?
+        }
+        
+        let minutes = self.currentTime / 60
+        let seconds = self.currentTime % 60
+        
+        func applyPadding(number: UInt16) -> String {
+            let sNumber = String(number)
+            if (number < 10) {
+                return "0\(sNumber)"
+            }
+            return sNumber
+        }
+        return String("\(applyPadding(number: minutes)):\(applyPadding(number: seconds))")
+    }
+    
+    func start() {
+        
+        self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+            
+            if(self.currentTime == 0) {
+                self.stop(newState: .finished)
+                // TODO: finished
+            } else {
+                self.currentTime -= 1
+                self.time = self.toString()
+            }
+        }
+        self.state = TimerState.running
+    }
+    
+    func stop(newState: TimerState = TimerState.stopped) {
+        self.timer?.invalidate()
+        self.timer = nil
+        self.state = newState
+    }
+    
+    func reset() {
+        self.stop()
+        self.currentTime = startTime
+        self.time = toString()
+    }
+}
+
+struct TimerView_Previews: PreviewProvider {
+    static var previews: some View {
+        TimerView( name: "Pomodoro", startTime: 400)
+    }
+}
