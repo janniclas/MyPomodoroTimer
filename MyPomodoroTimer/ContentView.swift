@@ -9,11 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            TimerView(name: "Pomodoro", startTime: 4)
-            Text("Hello ")
-        }
-        .padding()
+
+            BackgroundView(imageName: "tea").overlay(alignment: .top) {
+                TimerView(name: "Pomodoro", startTime: 4)
+            }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 

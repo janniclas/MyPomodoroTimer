@@ -12,6 +12,7 @@
 		DB572169290FEA3000B6C4E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB572168290FEA3000B6C4E8 /* Assets.xcassets */; };
 		DB57216D290FEA3000B6C4E8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB57216C290FEA3000B6C4E8 /* Preview Assets.xcassets */; };
 		DB572176290FEC4600B6C4E8 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB572175290FEC4600B6C4E8 /* TimerView.swift */; };
+		DBCF73C029112546005EB28B /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCF73BF29112546005EB28B /* BackgroundView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		DB57216A290FEA3000B6C4E8 /* MyPomodoroTimer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyPomodoroTimer.entitlements; sourceTree = "<group>"; };
 		DB57216C290FEA3000B6C4E8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DB572175290FEC4600B6C4E8 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		DBCF73BF29112546005EB28B /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				DB572168290FEA3000B6C4E8 /* Assets.xcassets */,
 				DB57216A290FEA3000B6C4E8 /* MyPomodoroTimer.entitlements */,
 				DB57216B290FEA3000B6C4E8 /* Preview Content */,
+				DBCF73BF29112546005EB28B /* BackgroundView.swift */,
 			);
 			path = MyPomodoroTimer;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 			files = (
 				DB572176290FEC4600B6C4E8 /* TimerView.swift in Sources */,
 				DB572167290FEA2F00B6C4E8 /* ContentView.swift in Sources */,
+				DBCF73C029112546005EB28B /* BackgroundView.swift in Sources */,
 				DB572165290FEA2F00B6C4E8 /* MyPomodoroTimerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -24,9 +24,12 @@ struct TimerView: View {
     var body: some View {
         VStack {
             Text(name)
-            Text(displayedTime).onReceive(self.timer.$time) { newValue in
-                self.displayedTime = newValue
-            }
+            Text(displayedTime)
+                .onReceive(self.timer.$time) { newValue in
+                    self.displayedTime = newValue
+                }
+                .font(.system(size: 36, weight: .black, design: .serif))
+                .padding()
             Button(self.startStop, action: {
                 switch self.timer.state {
                 case .stopped:
@@ -47,6 +50,10 @@ struct TimerView: View {
                 }
             }
         }
+        .padding()
+        .frame(minWidth: 250, minHeight: 200)
+        .background(Color.white.opacity(0.4))
+
     }
     
     
