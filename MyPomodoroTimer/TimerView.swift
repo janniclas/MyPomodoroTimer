@@ -10,33 +10,33 @@ import SwiftUI
 struct TimerView: View {
     
     let name: String
-    let cTimer: MyTimer
+    let timer: CustomTimer
     @State var displayedTime: String
     
     @State var startStop: String = "Start"
     
     init(name: String, startTime: UInt16 = 0) {
         self.name = name
-        self.cTimer = MyTimer(startTime: startTime)
-        self.displayedTime = cTimer.time
+        self.timer = CustomTimer(startTime: startTime)
+        self.displayedTime = timer.time
     }
     
     var body: some View {
         VStack {
             Text(name)
-            Text(displayedTime).onReceive(self.cTimer.$time) { newValue in
+            Text(displayedTime).onReceive(self.timer.$time) { newValue in
                 self.displayedTime = newValue
             }
             Button(self.startStop, action: {
-                switch self.cTimer.state {
+                switch self.timer.state {
                 case .stopped:
-                    self.cTimer.start()
+                    self.timer.start()
                 case .running:
-                    self.cTimer.stop()
+                    self.timer.stop()
                 case .finished:
-                    self.cTimer.reset()
+                    self.timer.reset()
                 }
-            }).onReceive(self.cTimer.$state) { state in
+            }).onReceive(self.timer.$state) { state in
                 switch state {
                 case .running:
                     self.startStop = "Stop"
@@ -52,9 +52,9 @@ struct TimerView: View {
     
 }
 
-class MyTimer: ObservableObject {
+class CustomTimer: ObservableObject {
     
-    enum TimerState {
+    enum State {
         case running
         case stopped
         case finished
@@ -65,7 +65,7 @@ class MyTimer: ObservableObject {
     private var currentTime: UInt16
     private var timer: Timer? = nil
     @Published var time: String
-    @Published var state: TimerState = TimerState.stopped
+    @Published var state: State = .stopped
     
     init(startTime: UInt16) {
         self.startTime = startTime
@@ -107,10 +107,10 @@ class MyTimer: ObservableObject {
                 self.time = self.toString()
             }
         }
-        self.state = TimerState.running
+        self.state = .running
     }
     
-    func stop(newState: TimerState = TimerState.stopped) {
+    func stop(newState: State = .stopped) {
         self.timer?.invalidate()
         self.timer = nil
         self.state = newState
