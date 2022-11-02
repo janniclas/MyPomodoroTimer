@@ -13,5 +13,15 @@ struct MyPomodoroTimerApp: App {
         WindowGroup {
             ContentView()
         }
+        #if os(macOS)
+        Settings {
+            SettingsView()
+        }
+        #endif
     }
 }
+
+
+// TODO:
+// menu bar extras
+// -- popovers

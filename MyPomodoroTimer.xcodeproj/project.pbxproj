@@ -13,6 +13,7 @@
 		DB57216D290FEA3000B6C4E8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB57216C290FEA3000B6C4E8 /* Preview Assets.xcassets */; };
 		DB572176290FEC4600B6C4E8 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB572175290FEC4600B6C4E8 /* TimerView.swift */; };
 		DBCF73C029112546005EB28B /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCF73BF29112546005EB28B /* BackgroundView.swift */; };
+		DBCF73C2291139FA005EB28B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCF73C1291139FA005EB28B /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		DB57216C290FEA3000B6C4E8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DB572175290FEC4600B6C4E8 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		DBCF73BF29112546005EB28B /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		DBCF73C1291139FA005EB28B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,10 +61,11 @@
 				DB572164290FEA2F00B6C4E8 /* MyPomodoroTimerApp.swift */,
 				DB572166290FEA2F00B6C4E8 /* ContentView.swift */,
 				DB572175290FEC4600B6C4E8 /* TimerView.swift */,
+				DBCF73BF29112546005EB28B /* BackgroundView.swift */,
+				DBCF73C1291139FA005EB28B /* SettingsView.swift */,
 				DB572168290FEA3000B6C4E8 /* Assets.xcassets */,
 				DB57216A290FEA3000B6C4E8 /* MyPomodoroTimer.entitlements */,
 				DB57216B290FEA3000B6C4E8 /* Preview Content */,
-				DBCF73BF29112546005EB28B /* BackgroundView.swift */,
 			);
 			path = MyPomodoroTimer;
 			sourceTree = "<group>";
@@ -103,7 +106,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1400;
-				LastUpgradeCheck = 1400;
+				LastUpgradeCheck = 1410;
 				TargetAttributes = {
 					DB572160290FEA2F00B6C4E8 = {
 						CreatedOnToolsVersion = 14.0.1;
@@ -145,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBCF73C2291139FA005EB28B /* SettingsView.swift in Sources */,
 				DB572176290FEC4600B6C4E8 /* TimerView.swift in Sources */,
 				DB572167290FEA2F00B6C4E8 /* ContentView.swift in Sources */,
 				DBCF73C029112546005EB28B /* BackgroundView.swift in Sources */,
@@ -188,6 +192,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -246,6 +251,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -270,13 +276,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MyPomodoroTimer/MyPomodoroTimer.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"MyPomodoroTimer/Preview Content\"";
 				DEVELOPMENT_TEAM = 75Q3MFLFF2;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Keep Calm and Do the Work";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -308,13 +318,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MyPomodoroTimer/MyPomodoroTimer.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"MyPomodoroTimer/Preview Content\"";
 				DEVELOPMENT_TEAM = 75Q3MFLFF2;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Keep Calm and Do the Work";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;

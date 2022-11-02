@@ -52,7 +52,8 @@ struct TimerView: View {
         }
         .padding()
         .frame(minWidth: 250, minHeight: 200)
-        .background(Color.white.opacity(0.4))
+        .background(.ultraThinMaterial)
+        .cornerRadius(10)
 
     }
     
