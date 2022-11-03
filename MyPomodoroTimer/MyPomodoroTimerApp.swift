@@ -19,26 +19,27 @@ struct MyPomodoroTimerApp: App {
         }
     }
     var body: some Scene {
-
+        
         WindowGroup {
             ContentView()
         }
+        
 #if os(macOS)
         Settings {
             SettingsView()
         }
-
-            MenuBarExtra(
-                icon,
-                isInserted: $showMenuBarExtra) {
-                    let t = TimerView(name: "Menu Bar", startTime: 600)
-                        t
-                        .onReceive(t.timer.$time) { newValue in
-                            self.icon = newValue
-                        }
-                }
-                .menuBarExtraStyle(.window)
- 
+        
+        MenuBarExtra(
+            icon,
+            isInserted: $showMenuBarExtra) {
+                let t = TimerView(name: "Menu Bar", startTime: 600)
+                t
+                    .onReceive(t.timer.$time) { newValue in
+                        self.icon = newValue
+                    }
+            }
+            .menuBarExtraStyle(.window)
 #endif
+        
     }
 }
