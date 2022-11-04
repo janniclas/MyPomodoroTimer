@@ -43,16 +43,6 @@ struct TimerView: View {
                     self.timer.reset()
                 }
             })
-//            .onReceive(self.timer.$state) { state in
-//                switch state {
-//                case .running:
-//                    self.startStop = "Stop"
-//                case .stopped:
-//                    self.startStop = "Start"
-//                case .finished:
-//                    self.startStop = "Reset"
-//                }
-//            }
         }
         .padding()
         .frame(minWidth: 250, minHeight: 200)
