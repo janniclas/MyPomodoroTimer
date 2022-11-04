@@ -9,34 +9,31 @@ import SwiftUI
 
 struct TimerView: View {
     
-    private static let defaultStartTime:UInt16 = 1500
-    
     let name: String
-    let timer: CustomTimer
-
-    @State var displayedTime: String
-    @State var startStop: String = "Start"
+    @EnvironmentObject var timer: CustomTimer
     
     init(name: String) {
-        self.init(name: name, timer: CustomTimer(startTime: TimerView.defaultStartTime))
+        self.name = name
     }
     
-    init(name: String, timer: CustomTimer) {
-        self.name = name
-        self.timer = timer
-        self.displayedTime = self.timer.time
+    private func getButtonString() -> String {
+        switch self.timer.state {
+        case .stopped:
+            return "Start"
+        case .running:
+            return "Stop"
+        case .finished:
+            return "Restart"
+        }
     }
     
     var body: some View {
         VStack {
             Text(name)
-            Text(displayedTime)
-                .onReceive(self.timer.$time) { newValue in
-                    self.displayedTime = newValue
-                }
+            Text(timer.time)
                 .font(.system(size: 36, weight: .black, design: .serif))
                 .padding()
-            Button(self.startStop, action: {
+            Button(self.getButtonString(), action: {
                 switch self.timer.state {
                 case .stopped:
                     self.timer.start()
@@ -45,16 +42,17 @@ struct TimerView: View {
                 case .finished:
                     self.timer.reset()
                 }
-            }).onReceive(self.timer.$state) { state in
-                switch state {
-                case .running:
-                    self.startStop = "Stop"
-                case .stopped:
-                    self.startStop = "Start"
-                case .finished:
-                    self.startStop = "Reset"
-                }
-            }
+            })
+//            .onReceive(self.timer.$state) { state in
+//                switch state {
+//                case .running:
+//                    self.startStop = "Stop"
+//                case .stopped:
+//                    self.startStop = "Start"
+//                case .finished:
+//                    self.startStop = "Reset"
+//                }
+//            }
         }
         .padding()
         .frame(minWidth: 250, minHeight: 200)

@@ -23,7 +23,7 @@ class CustomTimer: ObservableObject {
     @Published var time: String
     @Published var state: State = .stopped
     
-    init(startTime: UInt16) {
+    init(startTime: UInt16 = 1500) {
         self.startTime = startTime
         self.currentTime = startTime
         self.time = ""

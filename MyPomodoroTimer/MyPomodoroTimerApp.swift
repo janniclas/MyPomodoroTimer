@@ -10,9 +10,10 @@ import SwiftUI
 @available(macOS 13.0, *)
 @main
 struct MyPomodoroTimerApp: App {
-    
+    private static let defaultTime: UInt16 = 1500
     @AppStorage("showMenuBarExtra") private var showMenuBarExtra = true
-    @State private var icon = "10:00"
+    @StateObject var timer: CustomTimer = CustomTimer(startTime: MyPomodoroTimerApp.defaultTime)
+    
     init() {
         if #unavailable(macOS 13.0) {
             self.showMenuBarExtra = false
@@ -22,7 +23,9 @@ struct MyPomodoroTimerApp: App {
         
         WindowGroup {
             ContentView()
+                .environmentObject(timer)
         }
+        
         
 #if os(macOS)
         Settings {
@@ -30,16 +33,15 @@ struct MyPomodoroTimerApp: App {
         }
         
         MenuBarExtra(
-            icon,
+            timer.time,
             isInserted: $showMenuBarExtra) {
-                let t = TimerView(name: "Menu Bar")
-                t
-                    .onReceive(t.timer.$time) { newValue in
-                        self.icon = newValue
-                    }
+                TimerView(name: "Menu Bar")
+                    .environmentObject(timer)
+                
             }
             .menuBarExtraStyle(.window)
 #endif
         
     }
+    
 }
