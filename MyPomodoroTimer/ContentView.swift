@@ -11,7 +11,7 @@ struct ContentView: View {
     var body: some View {
 
             BackgroundView(imageName: "tea").overlay(alignment: .top) {
-                TimerView(name: "Pomodoro", startTime: 4)
+                TimerView(name: "Pomodoro")
             }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }

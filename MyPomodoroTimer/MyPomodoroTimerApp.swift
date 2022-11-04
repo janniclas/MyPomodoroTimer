@@ -32,7 +32,7 @@ struct MyPomodoroTimerApp: App {
         MenuBarExtra(
             icon,
             isInserted: $showMenuBarExtra) {
-                let t = TimerView(name: "Menu Bar", startTime: 600)
+                let t = TimerView(name: "Menu Bar")
                 t
                     .onReceive(t.timer.$time) { newValue in
                         self.icon = newValue

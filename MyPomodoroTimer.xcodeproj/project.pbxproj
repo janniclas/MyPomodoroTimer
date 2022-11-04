@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB518DE32914FC1600B7D30C /* MyTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB518DE22914FC1600B7D30C /* MyTimer.swift */; };
 		DB572165290FEA2F00B6C4E8 /* MyPomodoroTimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB572164290FEA2F00B6C4E8 /* MyPomodoroTimerApp.swift */; };
 		DB572167290FEA2F00B6C4E8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB572166290FEA2F00B6C4E8 /* ContentView.swift */; };
 		DB572169290FEA3000B6C4E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB572168290FEA3000B6C4E8 /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DB518DE22914FC1600B7D30C /* MyTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTimer.swift; sourceTree = "<group>"; };
 		DB572161290FEA2F00B6C4E8 /* MyPomodoroTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPomodoroTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB572164290FEA2F00B6C4E8 /* MyPomodoroTimerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPomodoroTimerApp.swift; sourceTree = "<group>"; };
 		DB572166290FEA2F00B6C4E8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				DB572164290FEA2F00B6C4E8 /* MyPomodoroTimerApp.swift */,
+				DB518DE22914FC1600B7D30C /* MyTimer.swift */,
 				DB572166290FEA2F00B6C4E8 /* ContentView.swift */,
 				DB572175290FEC4600B6C4E8 /* TimerView.swift */,
 				DBCF73BF29112546005EB28B /* BackgroundView.swift */,
@@ -149,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBCF73C2291139FA005EB28B /* SettingsView.swift in Sources */,
+				DB518DE32914FC1600B7D30C /* MyTimer.swift in Sources */,
 				DB572176290FEC4600B6C4E8 /* TimerView.swift in Sources */,
 				DB572167290FEA2F00B6C4E8 /* ContentView.swift in Sources */,
 				DBCF73C029112546005EB28B /* BackgroundView.swift in Sources */,
