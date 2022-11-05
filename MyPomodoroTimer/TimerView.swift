@@ -16,7 +16,7 @@ struct TimerView: View {
         self.name = name
     }
     
-    private func getButtonString() -> String {
+    private func getButtonName() -> String {
         switch self.timer.state {
         case .stopped:
             return "Start"
@@ -33,15 +33,8 @@ struct TimerView: View {
             Text(timer.time)
                 .font(.system(size: 36, weight: .black, design: .serif))
                 .padding()
-            Button(self.getButtonString(), action: {
-                switch self.timer.state {
-                case .stopped:
-                    self.timer.start()
-                case .running:
-                    self.timer.stop()
-                case .finished:
-                    self.timer.reset()
-                }
+            Button(self.getButtonName(), action: {
+                self.timer.toggle()
             })
         }
         .padding()

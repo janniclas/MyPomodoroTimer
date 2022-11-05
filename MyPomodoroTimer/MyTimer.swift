@@ -51,7 +51,22 @@ class CustomTimer: ObservableObject {
         return String("\(applyPadding(number: minutes)):\(applyPadding(number: seconds))")
     }
     
-    func start() {
+    /// Works depending on the internal state of the timer
+    /// state == .stopped --> starts timer
+    /// state == .running --> stops timer
+    /// state == .finished --> resets timer
+    func toggle() {
+        switch self.state {
+        case .stopped:
+            self.start()
+        case .running:
+            self.stop()
+        case .finished:
+            self.reset()
+        }
+    }
+    
+    private func start() {
         
         self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             
@@ -66,13 +81,13 @@ class CustomTimer: ObservableObject {
         self.state = .running
     }
     
-    func stop(newState: State = .stopped) {
+    private func stop(newState: State = .stopped) {
         self.timer?.invalidate()
         self.timer = nil
         self.state = newState
     }
     
-    func reset() {
+    private func reset() {
         self.stop()
         self.currentTime = startTime
         self.time = toString()
