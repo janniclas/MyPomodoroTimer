@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import AudioToolbox
 
 class CustomTimer: ObservableObject {
     
@@ -20,14 +20,28 @@ class CustomTimer: ObservableObject {
     /// Current timer value in seconds
     private var currentTime: UInt16
     private var timer: Timer? = nil
+
+    private var alarmSound: SystemSoundID? = nil
+    
+    
     @Published var time: String
     @Published var state: State = .stopped
+
     
-    init(startTime: UInt16 = 1500) {
+    init(startTime: UInt16 = 1500, playAlarm: Bool = true) {
         self.startTime = startTime
         self.currentTime = startTime
         self.time = ""
         self.time = toString()
+        if(playAlarm) {
+            #if os(macOS)
+                alarmSound = SystemSoundID(kSystemSoundID_FlashScreen)
+            #endif
+            #if os(iOS)
+                alarmSound = SystemSoundID(kSystemSoundID_Vibrate)
+            #endif
+
+        }
     }
     
     /// Takes a timer value in seconds and transforms it into String representation
@@ -71,6 +85,9 @@ class CustomTimer: ObservableObject {
         self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             
             if(self.currentTime == 0) {
+                if let alarmId = self.alarmSound {
+                    AudioServicesPlayAlertSound(alarmId)
+                }
                 self.stop(newState: .finished)
                 // TODO: finished
             } else {

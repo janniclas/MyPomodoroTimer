@@ -10,7 +10,7 @@ import SwiftUI
 @available(macOS 13.0, *)
 @main
 struct MyPomodoroTimerApp: App {
-    private static let defaultTime: UInt16 = 1500
+    private static let defaultTime: UInt16 = 4
     @AppStorage("showMenuBarExtra") private var showMenuBarExtra = true
     @StateObject var timer: CustomTimer = CustomTimer(startTime: MyPomodoroTimerApp.defaultTime)
     
