@@ -7,11 +7,12 @@
 
 import SwiftUI
 
+
+
 struct TimerView: View {
     
     let name: String
     @EnvironmentObject var timer: CustomTimer
-    
     init(name: String) {
         self.name = name
     }

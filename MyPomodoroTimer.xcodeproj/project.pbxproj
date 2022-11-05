@@ -15,6 +15,7 @@
 		DB572176290FEC4600B6C4E8 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB572175290FEC4600B6C4E8 /* TimerView.swift */; };
 		DBCF73C029112546005EB28B /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCF73BF29112546005EB28B /* BackgroundView.swift */; };
 		DBCF73C2291139FA005EB28B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCF73C1291139FA005EB28B /* SettingsView.swift */; };
+		DBEDDC6E2916800300CA1373 /* TakeABreakView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEDDC6D2916800300CA1373 /* TakeABreakView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		DB572175290FEC4600B6C4E8 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		DBCF73BF29112546005EB28B /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		DBCF73C1291139FA005EB28B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		DBEDDC6D2916800300CA1373 /* TakeABreakView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeABreakView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				DB518DE22914FC1600B7D30C /* MyTimer.swift */,
 				DB572166290FEA2F00B6C4E8 /* ContentView.swift */,
 				DB572175290FEC4600B6C4E8 /* TimerView.swift */,
+				DBEDDC6D2916800300CA1373 /* TakeABreakView.swift */,
 				DBCF73BF29112546005EB28B /* BackgroundView.swift */,
 				DBCF73C1291139FA005EB28B /* SettingsView.swift */,
 				DB572168290FEA3000B6C4E8 /* Assets.xcassets */,
@@ -157,6 +160,7 @@
 				DB572167290FEA2F00B6C4E8 /* ContentView.swift in Sources */,
 				DBCF73C029112546005EB28B /* BackgroundView.swift in Sources */,
 				DB572165290FEA2F00B6C4E8 /* MyPomodoroTimerApp.swift in Sources */,
+				DBEDDC6E2916800300CA1373 /* TakeABreakView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

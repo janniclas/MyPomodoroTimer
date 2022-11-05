@@ -23,11 +23,9 @@ class CustomTimer: ObservableObject {
 
     private var alarmSound: SystemSoundID? = nil
     
-    
     @Published var time: String
     @Published var state: State = .stopped
 
-    
     init(startTime: UInt16 = 1500, playAlarm: Bool = true) {
         self.startTime = startTime
         self.currentTime = startTime
@@ -85,17 +83,20 @@ class CustomTimer: ObservableObject {
         self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             
             if(self.currentTime == 0) {
-                if let alarmId = self.alarmSound {
-                    AudioServicesPlayAlertSound(alarmId)
-                }
-                self.stop(newState: .finished)
-                // TODO: finished
+                self.finished()
             } else {
                 self.currentTime -= 1
                 self.time = self.toString()
             }
         }
         self.state = .running
+    }
+    
+    internal func finished() {
+        if let alarmId = self.alarmSound {
+            AudioServicesPlayAlertSound(alarmId)
+        }
+        self.stop(newState: .finished)
     }
     
     private func stop(newState: State = .stopped) {
