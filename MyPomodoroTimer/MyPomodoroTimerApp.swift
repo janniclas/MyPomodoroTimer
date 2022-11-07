@@ -40,6 +40,7 @@ struct MyPomodoroTimerApp: App {
         }
         .windowStyle(HiddenTitleBarWindowStyle())
         
+        
         Settings {
             SettingsView()
         }
@@ -52,7 +53,7 @@ struct MyPomodoroTimerApp: App {
             }
             .onChange(of: timer.state) { newState in
                 if(newState == .finished) {
-                    self.openWindow(id: "breakWindow")
+                    self.openWindow(id: "breakWindow") //TODO: use fullScreenCover to achieve this on iOS
                 }
             }
             .menuBarExtraStyle(.window)
