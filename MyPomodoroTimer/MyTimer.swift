@@ -17,6 +17,7 @@ class CustomTimer: ObservableObject {
     }
     
     private var startTime: UInt16
+    private var breakTime: UInt16
     /// Current timer value in seconds
     private var currentTime: UInt16
     private var timer: Timer? = nil
@@ -26,9 +27,10 @@ class CustomTimer: ObservableObject {
     @Published var time: String
     @Published var state: State = .stopped
 
-    init(startTime: UInt16 = 1500, playAlarm: Bool = true) {
+    init(startTime: UInt16 = 1500, breakTime: UInt16 = 300, playAlarm: Bool = true) {
         self.startTime = startTime
         self.currentTime = startTime
+        self.breakTime = breakTime
         self.time = ""
         self.time = toString()
         if(playAlarm) {
@@ -76,6 +78,11 @@ class CustomTimer: ObservableObject {
         case .finished:
             self.reset()
         }
+    }
+    
+    func startBreak() {
+        self.currentTime = breakTime
+        self.start()
     }
     
     private func start() {

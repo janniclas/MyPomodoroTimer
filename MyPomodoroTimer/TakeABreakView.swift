@@ -9,6 +9,8 @@ import SwiftUI
 
 struct TakeABreakView: View {
     private let mainScreenSize: CGSize
+    @EnvironmentObject var timer: CustomTimer
+    @Environment(\.dismiss) private var dismiss
     init() {
         if let s = NSScreen.main?.visibleFrame.size {
             self.mainScreenSize = s
@@ -23,8 +25,17 @@ struct TakeABreakView: View {
             Color.green.opacity(0.8)
             VStack {
                 Text("Take a Break!")
-                Button("Take Break."){}
-                Button("Skip Break."){}
+                HStack {
+                    Button("Take Break"){
+                        timer.startBreak()
+                        dismiss()
+
+                    }
+                    Button("Skip Break"){
+                        timer.toggle()
+                        dismiss()
+                    }
+                }
             }
         }
         .ignoresSafeArea()

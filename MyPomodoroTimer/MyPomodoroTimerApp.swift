@@ -11,10 +11,11 @@ import SwiftUI
 @main
 @available(macOS 13.0, *)
 struct MyPomodoroTimerApp: App {
-    private static let defaultTime: UInt16 = 4
+    private static let defaultPomodoroTime: UInt16 = 4
+    private static let defaultBreakTime: UInt16 = 5
     
     @AppStorage("showMenuBarExtra") private var showMenuBarExtra = true
-    @StateObject var timer: CustomTimer = CustomTimer(startTime: MyPomodoroTimerApp.defaultTime)
+    @StateObject var timer: CustomTimer = CustomTimer(startTime: MyPomodoroTimerApp.defaultPomodoroTime, breakTime: MyPomodoroTimerApp.defaultBreakTime)
 #if os(macOS)
     @Environment(\.openWindow) private var openWindow
 #endif
@@ -37,6 +38,7 @@ struct MyPomodoroTimerApp: App {
 #if os(macOS)
         Window("Take a Break", id: "breakWindow") {
             TakeABreakView()
+                .environmentObject(timer)
         }
         .windowStyle(HiddenTitleBarWindowStyle())
         
