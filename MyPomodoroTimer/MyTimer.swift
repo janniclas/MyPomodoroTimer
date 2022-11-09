@@ -26,6 +26,7 @@ class CustomTimer: ObservableObject {
     
     @Published var time: String
     @Published var state: State = .stopped
+    @Published var isBreak: Bool = false
 
     init(startTime: UInt16 = 1500, breakTime: UInt16 = 300, playAlarm: Bool = true) {
         self.startTime = startTime
@@ -83,6 +84,7 @@ class CustomTimer: ObservableObject {
     func startBreak() {
         self.currentTime = breakTime
         self.start()
+        self.isBreak = true
     }
     
     private func start() {
@@ -99,11 +101,12 @@ class CustomTimer: ObservableObject {
         self.state = .running
     }
     
-    internal func finished() {
+    private func finished() {
         if let alarmId = self.alarmSound {
             AudioServicesPlayAlertSound(alarmId)
         }
         self.stop(newState: .finished)
+        self.isBreak = false
     }
     
     private func stop(newState: State = .stopped) {

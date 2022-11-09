@@ -41,7 +41,6 @@ struct TakeABreakView: View {
         .ignoresSafeArea()
         .frame(width: mainScreenSize.width, height: mainScreenSize.height)
     }
-    
 }
 
 struct TakeABreakView_Previews: PreviewProvider {

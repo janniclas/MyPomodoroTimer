@@ -17,6 +17,14 @@ struct TimerView: View {
         self.name = name
     }
     
+    private func getViewMode() -> String {
+        if timer.isBreak {
+            return "Take a Break"
+        } else {
+            return "Do the Work"
+        }
+    }
+    
     private func getButtonName() -> String {
         switch self.timer.state {
         case .stopped:
@@ -30,7 +38,7 @@ struct TimerView: View {
     
     var body: some View {
         VStack {
-            Text(name)
+            Text(self.getViewMode())
             Text(timer.time)
                 .font(.system(size: 36, weight: .black, design: .serif))
                 .padding()
